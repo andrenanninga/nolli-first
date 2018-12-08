@@ -1,12 +1,8 @@
 {
   "name": "nolli",
   "version": 2,
-  "builds": [
-    { "src": "packages/web/build/**/*.*", "use": "@now/static" },
-    { "src": "packages/api/src/**/*.*", "use": "@now/node" }
-  ],
+  "builds": [{ "src": "packages/web/build/**/*.*", "use": "@now/static" }],
   "routes": [
-    { "src": "/api", "dest": "/packages/api/src" },
     { "src": "/", "dest": "/packages/web/build/index.html" },
     { "src": "/(?<path>.*)", "dest": "/packages/web/build/$path" }
   ],
