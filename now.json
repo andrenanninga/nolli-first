@@ -1,0 +1,14 @@
+{
+  "name": "nollie",
+  "version": 2,
+  "builds": [
+    { "src": "packages/web/build/**/*.*", "use": "@now/static" },
+    { "src": "packages/api/src/index.js", "use": "@now/node-server" }
+  ],
+  "routes": [
+    { "src": "/api", "dest": "/packages/api/src" },
+    { "src": "/", "dest": "/packages/web/build/index.html" },
+    { "src": "/(?<path>.*)", "dest": "/packages/web/build/$path" }
+  ],
+  "public": true
+}
