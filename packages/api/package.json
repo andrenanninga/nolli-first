@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "build": "echo \"No build step yet, skipping\"",
+    "deploy": "echo \"No deploy step yet, skipping\""
+  },
   "dependencies": {
     "express": "^4.16.4"
   }
