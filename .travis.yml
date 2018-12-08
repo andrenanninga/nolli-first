@@ -5,7 +5,7 @@ node_js:
 cache: npm
 
 install:
-  - npm install --global lerna jest
+  - npm install --global lerna jest now
   - lerna bootstrap
 
 matrix:
