@@ -9,8 +9,8 @@ install:
   - lerna bootstrap
 
 script:
-  - lerna test
-  - lerna build
+  - lerna run test
+  - lerna run build
 
 deploy:
   provider: script
