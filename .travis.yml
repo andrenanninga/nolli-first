@@ -1,25 +1,26 @@
 language: node_js
 node_js:
-  - 11.1.0
+  - "11.1.0"
+
 cache: npm
 
 install:
   - npm install --global lerna jest now
   - lerna bootstrap
 
-  matrix:
+matrix:
   include:
     - name: Api pipeline
       env: PACKAGE_LOCATION=packages/api PACKAGE_NAME=nolli-api
     - name: Web pipeline
       env: PACKAGE_LOCATION=packages/web PACKAGE_NAME=nolli-web
 
-      script:
+script:
   - cd $PACKAGE_LOCATION
   - npm test
   - npm run-script build
   - echo "$TRAVIS_BUILD_DIR"
-  
+
 deploy:
   provider: script
   script: bash $TRAVIS_BUILD_DIR/scripts/deploy.sh
