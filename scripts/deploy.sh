@@ -8,7 +8,7 @@ fi
 
 echo "Current branch: $BRANCH";
 
-now -t "$NOW_TOKEN" --debug --force --no-clipboard deploy;
+now -t "$NOW_TOKEN" --debug --force --no-clipboard --regions bru deploy;
 
 if [ $BRANCH = "master" ]; then
 	now -t "$NOW_TOKEN" alias "nolli.nannin.ga";

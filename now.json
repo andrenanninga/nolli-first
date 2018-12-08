@@ -1,5 +1,5 @@
 {
-  "name": "nollie",
+  "name": "nolli",
   "version": 2,
   "builds": [
     { "src": "packages/web/build/**/*.*", "use": "@now/static" },
