@@ -7,5 +7,5 @@ pwd
 
 printenv
 
-# npm -t run-script deploy
-# now alias "nollie-${BRANCH}.nannin.ga"
+npm -t $NOW_TOKEN run-script deploy
+now -t $NOW_TOKEN alias "nollie-${BRANCH}.nannin.ga"
