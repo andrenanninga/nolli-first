@@ -18,10 +18,12 @@ matrix:
 script:
   - cd $PACKAGE_LOCATION
   - npm test
-  - npm build
+  - npm run-script build
 
 deploy:
   provider: script
-  script: now public --token $NOW_TOKEN
+  script: scripts/deploy.sh
   skip_cleanup: true
   app: $PACKAGE_NAME
+  on:
+    all_branches: true
