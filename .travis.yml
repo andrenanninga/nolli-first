@@ -1,30 +1,33 @@
 language: node_js
 node_js:
-  - "11.1.0"
-
+  - 11.1.0
 cache: npm
 
 install:
   - npm install --global lerna jest now
   - lerna bootstrap
 
-matrix:
+  matrix:
   include:
-    - name: "Api pipeline"
+    - name: Api pipeline
       env: PACKAGE_LOCATION=packages/api PACKAGE_NAME=nolli-api
-    - name: "Web pipeline"
+    - name: Web pipeline
       env: PACKAGE_LOCATION=packages/web PACKAGE_NAME=nolli-web
 
-script:
+      script:
   - cd $PACKAGE_LOCATION
   - npm test
   - npm run-script build
   - echo "$TRAVIS_BUILD_DIR"
-
+  
 deploy:
   provider: script
   script: bash $TRAVIS_BUILD_DIR/scripts/deploy.sh
   skip_cleanup: true
-  app: $PACKAGE_NAME
+  app: "$PACKAGE_NAME"
   on:
     all_branches: true
+
+env:
+  global:
+    secure: p23aEQ5uM1Ba4APpEQek04vfkKDRg5X0aO8dySWJj+XEPWcxK1f3snr7KwuOTVICjeqvwxAPSg6x491zvSamb+BgJUMag4pX8ChD3ySyvykSCwjajiVnGyBY7sgy7CoLU+OR7ikWzvSeeM6mx2FR5Hp9hqdIzNDLzec0pog3X3ss4uFONvvOBvKF7Y8nZeouiHrVEEtLSvjWM0fBcW7IYindAU3ZNMneUze3JNv/1f1g4EaiOPFbqP1WsRPMsHshJm3WlfenDbS8yAJ16AxOHYSHT5nL7BIquG9e190/AtVyyYhu/no7JAUxcnIRaL37RSDdgxRUVhzhi4iWnmlzvAi/DQ10jKKBNzysbkGwLmh1Gvsa2GW2ZhHDU0Og+9hBeu+m0Lm+omCANXygY14M4qtIAI4WTnMOGdDYRjXUUR9CTjDYo95YrBV/7ySN+LyLSTBvKHpg18In5y61J0tTRXdbcSK+oK7p4TQkBcRmxwjo4vCRI3ZhdpjKoFb9athcLjzhxYv7Sj1mOwG1V65Ylg80xONdEOFaTo+YO4LAFEhH0p2itrND5hMWssnnJeHf5HTijg16Z5KOgsZu0L8XmU/mY6OQaw5DP2eQ3rJDF9oWApgJL90o+Z8xqFlkaI5zmOkMA+5DhFxDC0o1nNefaG9hTkJrY66ElDwVjgX/MEo=
