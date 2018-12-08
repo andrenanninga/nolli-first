@@ -16,14 +16,14 @@ matrix:
       env: PACKAGE_LOCATION=packages/web PACKAGE_NAME=nolli-web
 
 script:
-  - pwd
   - cd $PACKAGE_LOCATION
   - npm test
   - npm run-script build
+  - cd -
 
 deploy:
   provider: script
-  script: bash ~/scripts/deploy.sh
+  script: bash scripts/deploy.sh
   skip_cleanup: true
   app: $PACKAGE_NAME
   on:
