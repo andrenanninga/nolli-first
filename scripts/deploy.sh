@@ -1,13 +1,14 @@
 #!/bin/bash
 
-BRANCH=$(git rev-parse --abbrev-ref HEAD)
+BRANCH=$(git rev-parse --abbrev-ref HEAD);
+printenv;
 
-echo "current branch: $BRANCH"
+echo "current branch: $BRANCH";
 
-now -t $NOW_TOKEN deploy
+now -t $NOW_TOKEN deploy;
 
 if [ $BRANCH = "master" ]; then
-	now -t $NOW_TOKEN alias "nolli.nannin.ga"
+	now -t $NOW_TOKEN alias "nolli.nannin.ga";
 else
-	now -t $NOW_TOKEN alias "nollie-${BRANCH}.nannin.ga"
+	now -t $NOW_TOKEN alias "nollie-${BRANCH}.nannin.ga";
 fi
