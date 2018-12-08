@@ -6,5 +6,6 @@
     { "src": "/", "dest": "/packages/web/build/index.html" },
     { "src": "/(?<path>.*)", "dest": "/packages/web/build/$path" }
   ],
-  "public": true
+  "public": true,
+  "regions": ["bru", "bru1"]
 }
