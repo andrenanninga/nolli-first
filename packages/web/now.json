@@ -1,0 +1,6 @@
+{
+  "name": "nollie-web",
+  "version": 2,
+  "builds": [{ "src": "build/*.*", "use": "@now/static" }],
+  "public": true
+}

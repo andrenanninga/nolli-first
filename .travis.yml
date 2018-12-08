@@ -1,0 +1,27 @@
+language: node_js
+node_js:
+  - "11.1.0"
+
+cache: yarn
+
+install:
+  - yarn global add lerna jest
+  - lerna bootstrap
+
+matrix:
+  include:
+    - name: "Api pipeline"
+      env: PACKAGE_LOCATION=packages/api PACKAGE_NAME=nolli-api
+    - name: "Web pipeline"
+      env: PACKAGE_LOCATION=packages/web PACKAGE_NAME=nolli-web
+
+script:
+  - cd $PACKAGE_LOCATION
+  - yarn test
+  - yarn build
+
+deploy:
+  provider: script
+  script: now public --token $NOW_TOKEN
+  skip_cleanup: true
+  app: $PACKAGE_NAME
