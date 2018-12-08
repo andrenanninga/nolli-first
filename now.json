@@ -3,7 +3,7 @@
   "version": 2,
   "builds": [
     { "src": "packages/web/build/**/*.*", "use": "@now/static" },
-    { "src": "packages/api/src/index.js", "use": "@now/node-server" }
+    { "src": "packages/api/src/**/*.*", "use": "@now/node" }
   ],
   "routes": [
     { "src": "/api", "dest": "/packages/api/src" },
