@@ -18,8 +18,8 @@ status "pending";
 
 {
 	# Deploy to now.sh
-	now -t "p$NOW_TOKEN" --no-clipboard --regions=bru deploy &&
-	now -t "p$NOW_TOKEN" alias "$ALIAS" &&
+	now -t "$NOW_TOKEN" --no-clipboard --regions=bru deploy &&
+	now -t "$NOW_TOKEN" alias "$ALIAS" &&
 	status "success"
 } || {
 	# Deployment has failed
