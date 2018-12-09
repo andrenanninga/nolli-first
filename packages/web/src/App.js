@@ -6,7 +6,7 @@ const App = () => {
   const [date, setDate] = useState("unknown");
 
   useEffect(() => {
-    fetch(`${process.env.API_ENDPOINT}/date`)
+    fetch(`${process.env.REACT_APP_API_ENDPOINT}/date`)
       .then(response => response.text())
       .then(setDate);
   }, []);
@@ -15,6 +15,7 @@ const App = () => {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <h1>title: {process.env.REACT_APP_TITLE}</h1>
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>

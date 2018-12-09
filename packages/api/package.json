@@ -4,7 +4,7 @@
   "main": "src/index.js",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon -w src src/local.js",
+    "start": "nodemon -w src -w scripts scripts/lambdaServer.js",
     "build": "echo \"No build step yet, skipping\"",
     "deploy": "echo \"No deploy step yet, skipping\""
   },
@@ -12,6 +12,7 @@
     "express": "^4.16.4"
   },
   "devDependencies": {
+    "cors": "^2.8.5",
     "nodemon": "^1.18.7"
   }
 }
