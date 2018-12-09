@@ -2,7 +2,7 @@
 
 function status {
 	GIT_COMMIT=$(git rev-parse HEAD);
-	curl -s "http://api.github.com/repos/$TRAVIS_REPO_SLUG/statuses/$GIT_COMMIT" \
+	curl --silent --verbose "https://api.github.com/repos/$TRAVIS_REPO_SLUG/statuses/$GIT_COMMIT" \
 		-u "fakeyou:$GITHUB_ACCESS_TOKEN" \
 		-H "Content-Type: application/json" \
 		-X POST \
