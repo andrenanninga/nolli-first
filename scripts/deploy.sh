@@ -15,3 +15,11 @@ if [ $BRANCH = "master" ]; then
 else
 	now -t "$NOW_TOKEN" alias "nollie-$BRANCH.nannin.ga";
 fi
+
+printenv;
+
+
+# curl "https://api.github.com/repos/nolli/my_repo/statuses/$GIT_COMMIT?access_token=abc123" \
+#   -H "Content-Type: application/json" \
+#   -X POST \
+#   -d "{\"state\": \"$STATUS\", \"description\": \"Jenkins\", \"target_url\": \"http://my.jenkins.box.com/job/dividata/$BUILD_NUMBER/console\"}"
