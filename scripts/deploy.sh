@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Exit with error
+set -eE;
+
 # Post a 'nolli/deployment' status with the deployment url to the commit/pull request
 function status {
 	GIT_COMMIT=$(git rev-parse HEAD);
@@ -10,7 +13,6 @@ function status {
 		-d "{\"context\": \"nolli/deployment\", \"state\": \"$1\", \"description\": \"Deployment at $ALIAS\", \"target_url\": \"https://$ALIAS\"}";
 }
 
-
 BRANCH="$TRAVIS_BRANCH";
 ALIAS=$([ $BRANCH = "master" ] && echo "nolli.nannin.ga" || echo "nolli-$BRANCH.nannin.ga");
 
@@ -19,10 +21,11 @@ status "pending";
 
 {
 	# Deploy to now.sh
-	now -t "$NOW_TOKEN" --no-clipboard --regions=bru deploy &&
+	now -t "p$NOW_TOKEN" --no-clipboard --regions=bru deploy &&
 	now -t "p$NOW_TOKEN" alias "$ALIAS" &&
 	status "success"
 } || {
 	# Deployment has failed
 	status "failure"
+	exit 1
 }
