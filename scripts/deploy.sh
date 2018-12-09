@@ -2,11 +2,11 @@
 
 function status {
 	GIT_COMMIT=$(git rev-parse HEAD);
-	curl "http://api.github.com/repos/$TRAVIS_REPO_SLUG/statuses/$GIT_COMMIT" \
+	curl -s "http://api.github.com/repos/$TRAVIS_REPO_SLUG/statuses/$GIT_COMMIT" \
 		-u "fakeyou:$GITHUB_ACCESS_TOKEN" \
 		-H "Content-Type: application/json" \
 		-X POST \
-		-d "{\"state\": \"$1\", \"description\": \"Deployment at $ALIAS\", \"target_url\": \"https://$ALIAS\"}"
+		-d "{\"context\": \"nolli/deployment\", \"state\": \"$1\", \"description\": \"Deployment at $ALIAS\", \"target_url\": \"https://$ALIAS\"}";
 }
 
 if [[ $TRAVIS_BRANCH ]]; then
