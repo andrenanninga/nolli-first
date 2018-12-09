@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+  - 11.1.0
+cache: npm
+install:
+  - npm install --global lerna jest now
+  - lerna bootstrap
+script:
+  - lerna run test
+  - lerna run build
+deploy:
+  provider: script
+  script: bash -x scripts/deploy.sh
+  skip_cleanup: true
+  on:
+    all_branches: true
+env:
+  global:
+    secure: "dbVeUOZn3MJFF56CedTc5l1/SXrADpCoP9OzPjB74g+KJTB+JVUZnk+SyNZxhpsMbMtcLUSdcolVo0TVt3iSOLOxx1EM1XDL4eiTUWYPAvT+ieAB21Pth7EbBA+wR1iAXeXNDDxecImKhP2jdWyyQFOUl+7l3BAPOjxHWGAYnrf3JyUEivu77bcCPghDgtlCxZ1JsKdFyg6nIV8VujbQ8nwDBYfsP9EqkCjlzZ21zS3Sk2tJJUIH4+gE9A04pDqf9RyhihvTbK9gS29F6hCl+u9+kOAnrLXWFAzF4yr/97zB+dMewvT5/7d0xj0BNG60XzpFXi1wtSA0yS3LtxoOHHAYpwQ+t6MGao5piFPp7IhlwzD3eUeQJXVbdd6rwAL9EA8OGgEg1RHI+VkOijbtSIac5WTq8lMYmrvQb87Nx9eAU5IrvtxbKVy2LFNSHxI6Tzdqj7gQmoIhB/5r1o8+E/nIGKgi/w0/IlVkn4383Fm4x6yrm4yqPqtPj+vr/YmOcvX/uyI7kb6h3q5G9EfLQDbcqik0PQO4uAVsikfe4a7kHVMulvPG3NtNVA9McJoFLJFW0wXYQJmHsnPzqyRzimUSpHYOBdMB0tTl3QPMYAAsqWhxrwh3k2XFKrBwQYJJ4hTo8BPJdk9/Ahck+4BFetkCfcSZGnJLh+hb+pHK1Eg="

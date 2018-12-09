@@ -1,0 +1,15 @@
+{
+  "name": "nolli",
+  "version": 2,
+  "builds": [
+    { "src": "packages/api/src/**/*.*", "use": "@now/node" },
+    { "src": "packages/web/build/**/*.*", "use": "@now/static" }
+  ],
+  "routes": [
+    { "src": "/api/(?<path>.*)", "dest": "/packages/api/src/$path.js" },
+    { "src": "/", "dest": "/packages/web/build/index.html" },
+    { "src": "/(?<path>.*)", "dest": "/packages/web/build/$path" }
+  ],
+  "public": true,
+  "regions": ["bru", "bru1"]
+}
